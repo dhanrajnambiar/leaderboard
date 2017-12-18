@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class = "col-lg-6 col-md-8 col-sm-8" style = "text-align:left">
+  <form method = "post" action = "">{% csrf_token %}
+    {% for name in list %}
+    <p><input type="radio" name="name_selected" value = {{ name }} >{{ name }}</p>
+    {% endfor %}
+    <p><button class = "btn btn-primary" type="submit">Submit</button></p>
+  </form>
+</div>
+
+{% endblock %}
