@@ -7,10 +7,11 @@
 
   <body>
       <div class="container">
-          {% include 'header.html' %}
+        {% include 'header3.html' %}
           <main role="main">
             <div class="jumbotron">
               <h1>{{ title }}</h1>
+              <p class = "text-align:center">{{ msg }}</p>
               {% block content %}
               {% endblock %}
             </div>

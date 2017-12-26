@@ -1,0 +1,22 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class = "col-lg-8 col-md-8 col-sm-10">
+  {% if request.user.is_authenticated %}
+    <p>Following is the list of your Participant's</p>
+      <table class = "table">
+        {% for item in list_participants %}
+        <tr>
+        <th>{{ forloop.counter }}</th><th>{{ item.full_name }}</th><th>{{ item.score }}</th>
+        </tr><br>
+        {% endfor %}
+      </table>
+
+  {% else %}
+    <h3>Please login</h3>
+    <a href = {% url 'user_login' %}>LOGIN</a>
+
+  {% endif %}
+
+</div>
+{% endblock %}

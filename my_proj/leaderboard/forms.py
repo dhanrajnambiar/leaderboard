@@ -1,8 +1,31 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from .models import participant
+from django.contrib.auth.models import User
+from .models import administrator, participant
 
+# class participantForm(forms.ModelForm):
+#     class Meta:
+#         model = participant
+#         fields = ['full_name','score']
+
+class UserRegForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username','email','password1','password2']
+
+class loginForm(forms.Form):
+    username = forms.CharField(max_length = 200)
+    password = forms.CharField(widget = forms.PasswordInput)
+
+    def clean_username(self):
+        inst_username = self.cleaned_data.get("username")
+        return inst_username
+
+    def clean_password(self):
+        inst_password = self.cleaned_data.get("password")
+        return inst_password
 
 class participantForm(forms.ModelForm):
     class Meta:
@@ -20,14 +43,3 @@ class participantForm(forms.ModelForm):
             return inst_score
         else:
             raise ValidationError("Please enter a meaningful score between 0 and 50")
-
-# class deleteParticipantForm(forms.Form):
-#     def existing_participants():
-#         x = participant.objects.order_by('pk')
-#         new, slno = [], 1
-#         for items in x:
-#             new.append((slno,items.full_name))
-#             slno += 1
-#         return tuple(new)
-#
-#     select_participant_to_delete = forms.ChoiceField( widget = forms.RadioSelect, choices = existing_participants())

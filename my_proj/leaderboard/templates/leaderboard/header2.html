@@ -1,0 +1,21 @@
+<header class="header clearfix">
+  <nav>
+    <ul class="nav nav-pills float-right">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'user_home' request.user %}">MyHome <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'add_participant' request.user %}">ADD</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'delete_participant' request.user %}">DELETE</a>
+      </li>
+      {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'user_logout' %}">LOGOUT</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  <h3 class="text-muted">LeaderBoard</h3>
+</header>
