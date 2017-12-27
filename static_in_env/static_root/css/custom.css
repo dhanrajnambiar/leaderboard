@@ -5,3 +5,7 @@
 .jumbotron{
   background-color: #59b74f;
 }
+
+.nav-item{
+  display:inline-block;
+}

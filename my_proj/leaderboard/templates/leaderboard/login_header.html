@@ -1,0 +1,16 @@
+<header class="header clearfix">
+  <nav>
+    <ul class="nav nav-inline nav-pills  float-right">
+      <li class="nav-item">
+        {% if '/login' in request.get_full_path %}
+        <a class="nav-link active" href="{% url 'create_user' %}">REGISTER <span class="sr-only">(current)</span></a>
+        {% elif '/register' in request.get_full_path %}
+        <a class="nav-link active" href="{% url 'user_login' %}">LOGIN <span class="sr-only">(current)</span></a>
+        {% elif '/logout' in request.get_full_path %}
+        <a class="nav-link" href="{% url 'user_login' %}">LOGIN </a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+  <h3 class="text-muted">LeaderBoard</h3>
+</header>

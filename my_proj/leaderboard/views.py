@@ -49,7 +49,12 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('user_login')
+    text = "Thank You, Visit Again!!!"
+    context = {
+        'title':text,
+    }
+
+    return render(request, 'leaderboard/logout.html', context)
 
 def register(request):
     r_form = UserRegForm(request.POST or None)

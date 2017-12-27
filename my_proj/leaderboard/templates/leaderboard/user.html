@@ -3,7 +3,11 @@
 {% block content %}
 <div class = "col-lg-8 col-md-8 col-sm-10">
   {% if request.user.is_authenticated %}
+    {% if list_participants %}
     <p>Following is the list of your Participant's</p>
+    {% else %}
+    <p>Sorry, no participants in your record. Add now</p>
+    {% endif %}
       <table class = "table">
         {% for item in list_participants %}
         <tr>
